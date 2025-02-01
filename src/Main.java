@@ -22,6 +22,14 @@ public class Main {
         5) Class CoR : Auth, Role, Limit, Exist, C, U, D
         */
 
+        User admin = new User(1, "John DOE", true, ERole.ADMIN);
+        User user1 = new User(2, "Jane DOE", false, ERole.USER);
+        User user2 = new User(3, "Bob DOE", true, ERole.USER);
+
+        System.out.println(admin);
+        System.out.println(user1);
+        System.out.println(user2);
+
         Film film = FFilm.create(1, "2001, L'Odysée de l'espace", "Science-fiction", "02:30:00");
 
     }
