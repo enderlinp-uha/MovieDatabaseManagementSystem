@@ -11,7 +11,6 @@ public class BRequest {
     private BRequest(Builder builder) {
         this.id = builder.id;
         this.type = builder.type;
-        this.timestamp = builder.timestamp;
         this.comment = builder.comment;
         this.author = builder.author;
         this.filmId = builder.filmId;
@@ -20,7 +19,7 @@ public class BRequest {
     public static class Builder {
         private int id;
         private EType type;
-        private LocalDateTime timestamp;
+        private LocalDateTime timestamp = LocalDateTime.now();
         private String comment;
         private String author;
         private String filmId;
@@ -34,11 +33,6 @@ public class BRequest {
 
         public Builder setType(EType type) {
             this.type = type;
-            return this;
-        }
-
-        public Builder setTimestamp(LocalDateTime timestamp) {
-            this.timestamp = timestamp;
             return this;
         }
 
