@@ -8,6 +8,8 @@ public class User {
     private ERole role;
     private List<User> users = new ArrayList<>();
 
+    public User() {}
+
     public User(int id, String name, Boolean auth, ERole role) {
         this.id = id;
         this.name = name;
@@ -21,6 +23,12 @@ public class User {
 
     public boolean isAuth() {
         return auth;
+    }
+
+    public void show() {
+        for (User user : users) {
+            System.out.println(user);
+        }
     }
 
     @Override
