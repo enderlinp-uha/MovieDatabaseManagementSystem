@@ -1,3 +1,3 @@
 public enum ERole {
-    USER, ADMIN
+    ADMIN, USER
 }

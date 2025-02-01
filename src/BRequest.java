@@ -1,12 +1,14 @@
-public class Request {
+import java.time.LocalDateTime;
+
+public class BRequest {
     private int id;
     private EType type;
-    private int timestamp;
+    private LocalDateTime timestamp;
     private String comment;
     private String author;
     private String filmId;
 
-    private Request(Builder builder) {
+    private BRequest(Builder builder) {
         this.id = builder.id;
         this.type = builder.type;
         this.timestamp = builder.timestamp;
@@ -18,7 +20,7 @@ public class Request {
     public static class Builder {
         private int id;
         private EType type;
-        private int timestamp;
+        private LocalDateTime timestamp;
         private String comment;
         private String author;
         private String filmId;
@@ -35,7 +37,7 @@ public class Request {
             return this;
         }
 
-        public Builder setTimestamp(int timestamp) {
+        public Builder setTimestamp(LocalDateTime timestamp) {
             this.timestamp = timestamp;
             return this;
         }
@@ -50,13 +52,13 @@ public class Request {
             return this;
         }
 
-        public Request build() {
-            return new Request(this);
+        public BRequest build() {
+            return new BRequest(this);
         }
     }
 
     @Override
     public String toString() {
-        return "Request: [id=" + id + ", type=" + type + ", timestamp=" + timestamp + ", comment=" + comment + ", author=" + author + ", filmId=" + filmId + "]";
+        return "Request {id=" + id + ", type=" + type + ", timestamp=" + timestamp + ", comment=" + comment + ", author=" + author + ", filmId=" + filmId + "}";
     }
 }

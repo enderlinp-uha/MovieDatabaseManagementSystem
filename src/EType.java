@@ -1,3 +1,3 @@
 public enum EType {
-    CREATE, UPDATE, DELETE
+    CREATE, DELETE, UPDATE
 }
