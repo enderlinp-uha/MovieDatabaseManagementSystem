@@ -10,38 +10,37 @@ public class Main {
         auth.setNext(role);
         role.setNext(movie);
 
-        User user1 = new User("John DOE", true, EUserRole.ADMIN);
-        User user2 = new User("Jane DOE", true, EUserRole.ADMIN);
+        User user1 = new User("John DOE", true,  EUserRole.ADMIN);
+        User user2 = new User("Jane DOE", true,  EUserRole.ADMIN);
         User user3 = new User("Jack DOE", false, EUserRole.ADMIN);
-        User user4 = new User("SpongeBob", true, EUserRole.USER);
+        User user4 = new User("SpongeBob", true, EUserRole.ADMIN);
 
-        HashMap<Integer, Movie> movies = new HashMap<>();
-        movies.put(1, FMovie.create("2001, L'Odysée de l'espace", "Science-fiction", "02:21"));
-        movies.put(2, FMovie.create("Interstellar", "Science-focition", "02:49"));
-        movies.put(3, FMovie.create("Knight of Cups", "Drame", "01:58"));
+        Movie movie1 = FMovie.create("2001, L'Odysée de l'espace", "Science-fiction", "02:21");
+        Movie movie2 = FMovie.create("Interstellar", "Science-fiction", "02:49");
+        Movie movie3 = FMovie.create("Knight of Cups", "Drame", "01:58");
 
-        BRequest req1 = new BRequest.Builder(movies)
+        BRequest req1 = new BRequest.Builder()
                 .setType(ERequestType.CREATE)
                 .setUser(user1)
-                .setMovieId(1)
+                .setMovie(movie1)
                 .build();
 
-        BRequest req2 = new BRequest.Builder(movies)
+        BRequest req2 = new BRequest.Builder()
                 .setType(ERequestType.CREATE)
                 .setUser(user2)
-                .setMovieId(2)
+                .setMovie(movie2)
                 .build();
 
-        BRequest req3 = new BRequest.Builder(movies)
+        BRequest req3 = new BRequest.Builder()
                 .setType(ERequestType.DELETE)
                 .setUser(user3)
-                .setMovieId(2)
+                .setMovie(movie2)
                 .build();
 
-        BRequest req4 = new BRequest.Builder(movies)
+        BRequest req4 = new BRequest.Builder()
                 .setType(ERequestType.DELETE)
                 .setUser(user4)
-                .setMovieId(1)
+                .setMovie(movie1)
                 .build();
 
         RequestHandler handler1 = new RequestHandler(req1);

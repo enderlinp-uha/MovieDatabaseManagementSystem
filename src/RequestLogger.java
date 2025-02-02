@@ -18,9 +18,10 @@ public class RequestLogger {
     }
 
     public void log(RequestHandler request, String message) {
-        int id = request.getMovieId();
-        HashMap<Integer, Movie> movies = request.getMovies();
-        Movie movie = movies.get(id);
+        Movie movie = request.getMovie();
+        //int id = request.getMovieId();
+        //HashMap<Integer, Movie> movies = request.getMovies();
+        //Movie movie = movies.get(id);
 
         RequestLogger entry = new RequestLogger(request.getType(), movie.getTitle(), message);
         logs.add(entry);

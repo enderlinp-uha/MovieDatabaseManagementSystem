@@ -17,12 +17,8 @@ public class RequestHandler {
         return this.request.getUser();
     }
 
-    public int getMovieId() {
-        return this.request.getMovieId();
-    }
-
-    public HashMap<Integer, Movie> getMovies() {
-        return this.request.getMovies();
+    public Movie getMovie() {
+        return this.request.getMovie();
     }
 
     public void handleRequest(RequestHandler requestHandler) {

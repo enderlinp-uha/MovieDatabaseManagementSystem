@@ -1,19 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Movie {
     private int    id;
     private String title;
     private String category;
     private String duration;
-    private Map<Integer, Movie> movies = new HashMap<>();
+    private List<Movie> movies = new ArrayList<>();
 
     public Movie(int id, String title, String category, String duration) {
-        this.id       = id;
-        this.title    = title;
+        this.id = id;
+        this.title = title;
         this.category = category;
         this.duration = duration;
-        this.movies.put(id, this);
     }
 
     public int getId() {
@@ -24,7 +23,11 @@ public class Movie {
         return title;
     }
 
-    public void update(ERequestType type) {
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    /*public void update(ERequestType type) {
         switch (type) {
             case CREATE, UPDATE:
                 movies.put(id, this);
@@ -33,14 +36,23 @@ public class Movie {
             case DELETE:
                 movies.remove(id);
         }
-    }
+    }*/
 
-    public Map<Integer, Movie> getMovies() {
+    /*public Map<Integer, Movie> getMovies() {
         return movies;
+    }*/
+
+    public boolean containsId(List<Movie> movies, int id) {
+        for (Movie movie : movies) {
+            if (movie.getId() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean containsTitle(Map<Integer, Movie> movies, String title) {
-        for (Movie movie : movies.values()) {
+    public boolean containsTitle(List<Movie> movies, String title) {
+        for (Movie movie : movies) {
             if (movie.getTitle().equalsIgnoreCase(title)) {
                 return true;
             }
