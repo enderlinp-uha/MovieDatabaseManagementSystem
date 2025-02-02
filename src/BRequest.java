@@ -7,6 +7,8 @@ public class BRequest {
     private Movie movie;
     private Integer entry;
 
+    private String conclusion = "";
+
     private BRequest(RequestBuilder builder) {
         this.type = builder.type;
         this.date = builder.date;
@@ -33,6 +35,26 @@ public class BRequest {
 
     public Integer getEntry() {
         return entry;
+    }
+
+    public String getConclusion() {
+        return conclusion;
+    }
+
+    public void setConclusion(String conclusion) {
+        this.conclusion = conclusion;
+    }
+
+    @Override
+    public String toString() {
+        return "Request{"
+                + "type=" + type
+                + ", date=" + date
+                + ", user=" + user
+                + ", movie=" + movie
+                + ", entry=" + entry
+                + ", conclusion=" + conclusion
+                + "}";
     }
 
     public static class RequestBuilder {
