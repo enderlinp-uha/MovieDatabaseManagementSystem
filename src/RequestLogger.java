@@ -1,23 +1,28 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class Logger {
+public class RequestLogger {
     private ERequestType type;
     private String title;
     private String message;
-    private List<Logger> logs = new ArrayList<>();
+    private List<RequestLogger> logs = new ArrayList<>();
 
-    public Logger() {}
+    public RequestLogger() {}
 
-    public Logger(ERequestType type, String title, String message) {
+    public RequestLogger(ERequestType type, String title, String message) {
         this.type = type;
         this.title = title;
         this.message = message;
     }
 
     public void log(RequestHandler request, String message) {
-        Logger entry = new Logger(request.getType(), request.getMovie().getTitle(), message);
+        int id = request.getMovieId();
+        HashMap<Integer, Movie> movies = request.getMovies();
+        Movie movie = movies.get(id);
+
+        RequestLogger entry = new RequestLogger(request.getType(), movie.getTitle(), message);
         logs.add(entry);
         System.out.println(entry);
     }

@@ -1,10 +1,9 @@
-import java.util.Map;
+import java.util.HashMap;
 
 public class MovieHandler implements IRequestHandler {
     private IRequestHandler next = null;
     private final int MAX_LENGTH = 10;
     private String message;
-    private Logger logger = new Logger();
 
     @Override
     public void setNext(IRequestHandler next) {
@@ -13,9 +12,10 @@ public class MovieHandler implements IRequestHandler {
 
     @Override
     public void handleRequest(RequestHandler request) {
-        Movie movie = request.getMovie();
-        Map<Integer, Movie> movies = movie.getMovies();
-        int id = movie.getId();
+        int id = request.getMovieId();
+        HashMap<Integer, Movie> movies = request.getMovies();
+        Movie movie = movies.get(id);
+
 
         switch (request.getType()) {
             case CREATE:
@@ -24,30 +24,30 @@ public class MovieHandler implements IRequestHandler {
                 } else if (movies.containsKey(id)) {
                     message = "Movie already exists in the database";
                 } else {
-                    movies.put(id, movie);
+                    movies.put(movie.getId(), movie);
                     message = "Movie created successfully";
                 }
                 break;
 
             case UPDATE:
-                if (!movies.containsKey(id)) {
+                if (!movies.containsKey(movie.getId())) {
                     message = "Movie do not exist in the database";
                 } else {
-                    movies.put(id, movie);
+                    movies.put(movie.getId(), movie);
                     message = "Movie updated successfully";
                 }
                 break;
 
             case DELETE:
-                if (!movies.containsKey(id)) {
+                if (!movies.containsKey(movie.getId())) {
                     message = "Movie do not exist in the database";
                 } else {
-                    movies.remove(id);
+                    movies.remove(movie.getId());
                     message = "Movie deleted successfully";
                 }
                 break;
         }
 
-        logger.log(request, message);
+        SRequestLogger.getIntance().log(request, message);
     }
 }

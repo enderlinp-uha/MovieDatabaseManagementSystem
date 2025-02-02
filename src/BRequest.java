@@ -1,17 +1,20 @@
 import java.time.LocalDateTime;
+import java.util.HashMap;
 
 public class BRequest {
     private static int autoIncrement = 0;
     private int id;
     private ERequestType type;
     private User user;
-    private Movie movie;
+    private int movieId;
+    private HashMap<Integer, Movie> movies;
 
     private BRequest(Builder builder) {
         this.id = builder.id;
         this.type = builder.type;
         this.user = builder.user;
-        this.movie = builder.movie;
+        this.movieId = builder.movieId;
+        this.movies = builder.movies;
     }
 
     public int getId() {
@@ -26,15 +29,24 @@ public class BRequest {
         return user;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public HashMap<Integer, Movie> getMovies() {
+        return movies;
     }
 
     public static class Builder {
         private int id;
         private ERequestType type;
         private User user;
-        private Movie movie;
+        private int movieId;
+        private HashMap<Integer, Movie> movies;
+
+        public Builder(HashMap<Integer, Movie> movies) {
+            this.movies = movies;
+        }
 
         public Builder setType(ERequestType type) {
             this.type = type;
@@ -46,8 +58,8 @@ public class BRequest {
             return this;
         }
 
-        public Builder setMovie(Movie movie) {
-            this.movie = movie;
+        public Builder setMovieId(int movieId) {
+            this.movieId = movieId;
             return this;
         }
 
@@ -59,6 +71,6 @@ public class BRequest {
 
     @Override
     public String toString() {
-        return "Request {id=" + id + ", type=" + type + ", user=" + user + ", movie=" + movie + "}";
+        return "Request {id=" + id + ", type=" + type + ", user=" + user + ", movieId=" + movieId + "}";
     }
 }

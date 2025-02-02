@@ -19,6 +19,10 @@ public class User {
         return role == EUserRole.ADMIN;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "User {id=" + id + ", name=" + name + ", auth=" + auth + ", role=" + role + "}";

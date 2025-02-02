@@ -1,6 +1,4 @@
-import com.sun.net.httpserver.Request;
-
-import java.time.LocalDateTime;
+import java.util.HashMap;
 
 public class RequestHandler {
     private BRequest request;
@@ -12,15 +10,19 @@ public class RequestHandler {
     }
 
     public ERequestType getType() {
-        return request.getType();
+        return this.request.getType();
     }
 
     public User getUser() {
         return this.request.getUser();
     }
 
-    public Movie getMovie() {
-        return this.request.getMovie();
+    public int getMovieId() {
+        return this.request.getMovieId();
+    }
+
+    public HashMap<Integer, Movie> getMovies() {
+        return this.request.getMovies();
     }
 
     public void handleRequest(RequestHandler requestHandler) {
@@ -28,7 +30,7 @@ public class RequestHandler {
     }
 
     public String getConclusion() {
-        return conclusion;
+        return this.conclusion;
     }
 
     public void setConclusion(String conclusion) {

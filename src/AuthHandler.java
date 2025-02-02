@@ -1,5 +1,8 @@
+import java.util.HashMap;
+
 public class AuthHandler implements IRequestHandler {
     private IRequestHandler next = null;
+    //public HashMap<Integer, Movie> movies;
 
     @Override
     public void setNext(IRequestHandler next) {
@@ -7,14 +10,13 @@ public class AuthHandler implements IRequestHandler {
     }
 
     @Override
-    public void handleRequest(RequestHandler requestHandler) {
-        if (!requestHandler.getUser().isAuth()) {
-            requestHandler.setConclusion("[Failure] Sorry, you are not logged in");
-            next = null;
+    public void handleRequest(RequestHandler request) {
+        if (!request.getUser().isAuth()) {
+            request.setConclusion("[Failure] Sorry, you are not logged in");
         } else {
-            System.out.println("[Success] You have successfully logged in");
+            System.out.println("[Success] " + request.getUser().getName() + " has successfully logged in");
             if (next != null) {
-                next.handleRequest(requestHandler);
+                next.handleRequest(request);
             }
         }
     }

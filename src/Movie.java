@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Movie {
@@ -26,8 +24,28 @@ public class Movie {
         return title;
     }
 
+    public void update(ERequestType type) {
+        switch (type) {
+            case CREATE, UPDATE:
+                movies.put(id, this);
+                break;
+
+            case DELETE:
+                movies.remove(id);
+        }
+    }
+
     public Map<Integer, Movie> getMovies() {
         return movies;
+    }
+
+    public boolean containsTitle(Map<Integer, Movie> movies, String title) {
+        for (Movie movie : movies.values()) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

@@ -7,14 +7,13 @@ public class RoleHandler implements IRequestHandler {
     }
 
     @Override
-    public void handleRequest(RequestHandler requestHandler) {
-        if (!requestHandler.getUser().isAdmin()) {
-            requestHandler.setConclusion("[Failure] Sorry, you are not an admin");
-            next = null;
+    public void handleRequest(RequestHandler request) {
+        if (!request.getUser().isAdmin()) {
+            request.setConclusion("[Failure] " + request.getUser().getName() + " is not an administrator");
         } else {
-            System.out.println("[Success] Your role is admin");
+            System.out.println("[Success] " + request.getUser().getName() + " is an administrator");
             if (next != null) {
-                next.handleRequest(requestHandler);
+                next.handleRequest(request);
             }
         }
     }
