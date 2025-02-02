@@ -1,6 +1,11 @@
 public class Main {
     public static void main(String[] args) {
 
+        Database database = SDatabase.getInstance();
+        database.create(FMovie.createMovie("2001, L'Odysée de l'espace", "02:21", EMovieCategory.SCIENCEFICTION));
+        database.create(FMovie.createMovie("Interstellar", "02:49", EMovieCategory.SCIENCEFICTION));
+        database.create(FMovie.createMovie("Knight of Cups", "01:58", EMovieCategory.DRAMA));
+
         IRequestHandler loggedIn = new ChainLoggedIn();
         IRequestHandler role     = new ChainRole();
         IRequestHandler movie    = new ChainMovie();
