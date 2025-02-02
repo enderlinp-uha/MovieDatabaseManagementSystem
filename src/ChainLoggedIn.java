@@ -1,6 +1,4 @@
-import java.util.HashMap;
-
-public class AuthHandler implements IRequestHandler {
+public class ChainLoggedIn implements IRequestHandler {
     private IRequestHandler next = null;
 
     @Override
@@ -9,14 +7,14 @@ public class AuthHandler implements IRequestHandler {
     }
 
     @Override
-    public void handleRequest(RequestHandler request) {
-        if (!request.getUser().isAuth()) {
+    public void handleRequest(BRequest request) {
+        /*if (!request.getUser().isLoggedIn()) {
             request.setConclusion("[Failure] " + request.getUser().getName() + "is not logged in");
         } else {
             System.out.println("[Success] " + request.getUser().getName() + " has successfully logged in");
             if (next != null) {
                 next.handleRequest(request);
             }
-        }
+        }*/
     }
 }

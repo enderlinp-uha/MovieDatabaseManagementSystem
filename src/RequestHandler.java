@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 public class RequestHandler {
     private BRequest request;
     private RequestHandler requestHandler;

@@ -1,7 +1,6 @@
-import java.util.HashMap;
 import java.util.List;
 
-public class MovieHandler implements IRequestHandler {
+public class ChainMovie implements IRequestHandler {
     private IRequestHandler next = null;
     private final int MAX_LENGTH = 10;
     private String message;
@@ -12,8 +11,8 @@ public class MovieHandler implements IRequestHandler {
     }
 
     @Override
-    public void handleRequest(RequestHandler request) {
-        Movie movie = request.getMovie();
+    public void handleRequest(BRequest request) {
+        /*Movie movie = request.getMovie();
         List<Movie> movies = movie.getMovies();
         int id = movie.getId();
         String title = movie.getTitle();
@@ -49,7 +48,7 @@ public class MovieHandler implements IRequestHandler {
                 break;
         }
 
-        SRequestLogger.getIntance().log(request, message);
-        next = null;
+        //SLogger.getIntance().log(request, message);
+        next = null;*/
     }
 }

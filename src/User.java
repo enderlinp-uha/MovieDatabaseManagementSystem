@@ -1,30 +1,44 @@
 public class User {
-    private int     id = 0;
-    private String  name;
-    private Boolean auth;
+    private String  name = "";
+    private Boolean isLoggedIn = false;
+
     private EUserRole role;
 
-    public User(String name, Boolean auth, EUserRole role) {
-        this.id   = ++id;
+    public User(String name, EUserRole role) {
         this.name = name;
-        this.auth = auth;
         this.role = role;
-    }
-
-    public boolean isAuth() {
-        return auth;
-    }
-
-    public boolean isAdmin() {
-        return role == EUserRole.ADMIN;
     }
 
     public String getName() {
         return name;
     }
 
+    public EUserRole getRole() {
+        return role;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void signin() {
+        isLoggedIn = true;
+    }
+
+    public void signout() {
+        isLoggedIn = false;
+    }
+
+    public boolean isAdmin() {
+        return role == EUserRole.ADMIN;
+    }
+
     @Override
     public String toString() {
-        return "User {id=" + id + ", name=" + name + ", auth=" + auth + ", role=" + role + "}";
+        return "User{"
+                + "name=" + this.name
+                + ", isLoggedIn=" + this.isLoggedIn
+                + ", role=" + this.role
+                + "}";
     }
 }

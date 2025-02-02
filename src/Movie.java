@@ -1,14 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Movie {
-    private int    id;
-    private String title;
-    private String category;
-    private String duration;
-    private List<Movie> movies = new ArrayList<>();
+    private int    id = 0;
+    private String title = "";
+    private String duration = "";
+    private EMovieCategory category;
 
-    public Movie(int id, String title, String category, String duration) {
+    public Movie(int id, String title, String duration, EMovieCategory category) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -23,45 +19,25 @@ public class Movie {
         return title;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
+    public String getDuration() {
+        return duration;
     }
 
-    /*public void update(ERequestType type) {
-        switch (type) {
-            case CREATE, UPDATE:
-                movies.put(id, this);
-                break;
-
-            case DELETE:
-                movies.remove(id);
-        }
-    }*/
-
-    /*public Map<Integer, Movie> getMovies() {
-        return movies;
-    }*/
-
-    public boolean containsId(List<Movie> movies, int id) {
-        for (Movie movie : movies) {
-            if (movie.getId() == id) {
-                return true;
-            }
-        }
-        return false;
+    public EMovieCategory getCategory() {
+        return category;
     }
 
-    public boolean containsTitle(List<Movie> movies, String title) {
-        for (Movie movie : movies) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                return true;
-            }
-        }
-        return false;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "Movie {id=" + id + ", title=" + title + ", category=" + category + ", duration=" + duration + "}";
+        return "Movie{"
+                + "id=" + id
+                + ", title=" + title
+                + ", duration=" + duration
+                + ", category=" + category
+                + "}";
     }
 }

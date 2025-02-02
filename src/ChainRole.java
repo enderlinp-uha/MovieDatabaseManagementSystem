@@ -1,4 +1,4 @@
-public class RoleHandler implements IRequestHandler {
+public class ChainRole implements IRequestHandler {
     private IRequestHandler next = null;
 
     @Override
@@ -7,14 +7,14 @@ public class RoleHandler implements IRequestHandler {
     }
 
     @Override
-    public void handleRequest(RequestHandler request) {
-        if (!request.getUser().isAdmin()) {
+    public void handleRequest(BRequest request) {
+        /*if (!request.getUser().isAdmin()) {
             request.setConclusion("[Failure] " + request.getUser().getName() + " is not an administrator");
         } else {
             System.out.println("[Success] " + request.getUser().getName() + " is an administrator");
             if (next != null) {
                 next.handleRequest(request);
             }
-        }
+        }*/
     }
 }

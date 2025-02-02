@@ -1,64 +1,73 @@
+import java.util.Date;
+
 public class BRequest {
-    private static int autoIncrement = 0;
-    private int id;
     private ERequestType type;
+    private String date;
     private User user;
     private Movie movie;
+    private Integer entry;
 
-    private BRequest(Builder builder) {
-        this.id = builder.id;
+    private BRequest(RequestBuilder builder) {
         this.type = builder.type;
+        this.date = builder.date;
         this.user = builder.user;
         this.movie = builder.movie;
-    }
-
-    public int getId() {
-        return this.id;
+        this.entry = builder.entry;
     }
 
     public ERequestType getType() {
-        return this.type;
+        return type;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public User getUser() {
-        return this.user;
+        return user;
     }
 
     public Movie getMovie() {
-        return this.movie;
+        return movie;
     }
 
-    public static class Builder {
-        private int id;
+    public Integer getEntry() {
+        return entry;
+    }
+
+    public static class RequestBuilder {
         private ERequestType type;
         private User user;
         private Movie movie;
+        private Integer entry;
+        private String date;
 
-        public Builder() {}
+        public RequestBuilder() {
+            this.date = Utils.formattedDate(new Date(), "yyyy-MM-dd HH:mm");
+        }
 
-        public Builder setType(ERequestType type) {
+        public RequestBuilder setType(ERequestType type) {
             this.type = type;
             return this;
         }
 
-        public Builder setUser(User user) {
+        public RequestBuilder setUser(User user) {
             this.user = user;
             return this;
         }
 
-        public Builder setMovie(Movie movie) {
+        public RequestBuilder setMovie(Movie movie) {
             this.movie = movie;
             return this;
         }
 
+        public RequestBuilder setEntry(Integer entry) {
+            this.entry = entry;
+            return this;
+        }
+
         public BRequest build() {
-            this.id = ++autoIncrement;
             return new BRequest(this);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Request {id=" + id + ", type=" + type + ", user=" + user + ", movie=" + movie + "}";
     }
 }

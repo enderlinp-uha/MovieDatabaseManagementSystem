@@ -1,16 +1,24 @@
-import java.util.*;
-
 public class Main {
     public static void main(String[] args) {
 
-        IRequestHandler auth  = new AuthHandler();
-        IRequestHandler role  = new RoleHandler();
-        IRequestHandler movie = new MovieHandler();
+        IRequestHandler loggedIn = new ChainLoggedIn();
+        IRequestHandler role     = new ChainRole();
+        IRequestHandler movie    = new ChainMovie();
 
-        auth.setNext(role);
+        loggedIn.setNext(role);
         role.setNext(movie);
 
-        User user1 = new User("John DOE", true,  EUserRole.ADMIN);
+        User user = FUser.createUser("SpongeBob", EUserRole.USER);
+        user.signin();
+
+        User admin = FUser.createUser("John DOE", EUserRole.ADMIN);
+
+        //
+
+
+
+        admin.signin();
+        /*User user1 = new User("John DOE", true,  EUserRole.ADMIN);
         User user2 = new User("Jane DOE", true,  EUserRole.ADMIN);
         User user3 = new User("Jack DOE", false, EUserRole.ADMIN);
         User user4 = new User("SpongeBob", true, EUserRole.ADMIN);
@@ -53,6 +61,6 @@ public class Main {
         auth.handleRequest(handler3);
 
         RequestHandler handler4 = new RequestHandler(req4);
-        auth.handleRequest(handler4);
+        auth.handleRequest(handler4);*/
     }
 }
