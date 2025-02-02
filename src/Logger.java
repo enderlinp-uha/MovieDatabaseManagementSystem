@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Logger {
 
-    EType type;
+    ERequestType type;
     String title;
     String message;
     LocalDateTime timestamp;
@@ -12,15 +12,15 @@ public class Logger {
 
     public Logger() {}
 
-    public Logger(EType type, String title, String message, LocalDateTime timestamp) {
+    public Logger(ERequestType type, String title, String message) {
         this.type = type;
         this.title = title;
         this.message = message;
-        this.timestamp = timestamp;
+        this.timestamp = LocalDateTime.now();
     }
 
-    public void log(EType type, String title, String message) {
-        logs.add(new Logger(type, title, message, LocalDateTime.now()));
+    public void log(ERequestType type, String title, String message) {
+        logs.add(new Logger(type, title, message));
     }
 
     public void showLogs() {

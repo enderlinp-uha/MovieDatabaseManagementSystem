@@ -1,3 +1,3 @@
-public enum EType {
+public enum ERequestType {
     CREATE, DELETE, UPDATE
 }

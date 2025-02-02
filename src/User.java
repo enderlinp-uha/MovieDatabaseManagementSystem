@@ -1,22 +1,14 @@
 public class User {
-    private int id;
-    private String name;
+    private int     id = 0;
+    private String  name;
     private Boolean auth;
-    private ERole role;
+    private EUserRole role;
 
-    public User(int id, String name, Boolean auth, ERole role) {
-        this.id = id;
+    public User(String name, Boolean auth, EUserRole role) {
+        this.id   = ++id;
         this.name = name;
         this.auth = auth;
         this.role = role;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public boolean isAuth() {
@@ -24,7 +16,7 @@ public class User {
     }
 
     public boolean isAdmin() {
-        return role == ERole.ADMIN;
+        return role == EUserRole.ADMIN;
     }
 
     @Override
