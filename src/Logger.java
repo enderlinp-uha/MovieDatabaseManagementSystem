@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Logger {
 
@@ -7,7 +8,7 @@ public class Logger {
     String title;
     String message;
     LocalDateTime timestamp;
-    ArrayList<Logger> logs;
+    List<Logger> logs = new ArrayList<>();
 
     public Logger() {}
 
@@ -15,11 +16,11 @@ public class Logger {
         this.type = type;
         this.title = title;
         this.message = message;
-        this.timestamp = LocalDateTime.now();
+        this.timestamp = timestamp;
     }
 
     public void log(EType type, String title, String message) {
-        logs.add(new Logger(type, title, message, timestamp));
+        logs.add(new Logger(type, title, message, LocalDateTime.now()));
     }
 
     public void showLogs() {

@@ -1,11 +1,14 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Movie {
     private int id;
     private String title;
     private String category;
     private String duration;
-    private ArrayList<Movie> movies = new ArrayList<>();
+    private List<Movie> movies = new ArrayList<>();
+
+    public Movie() {}
 
     public Movie(int id, String title, String category, String duration) {
         this.id = id;
@@ -28,6 +31,6 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie {id=" + id + ", title=" + title + ", category=" + category + ", duration=" + duration + "}";
+        return "Movie {id=" + id + ", title=" + title + ", category=" + category + ", duration=" + duration + "}\n";
     }
 }
