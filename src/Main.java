@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         Database database = SDatabase.getInstance();
-        database.create(FMovie.createMovie("2001, L'Odysée de l'espace", "02:21", EMovieCategory.SCIENCEFICTION));
-        database.create(FMovie.createMovie("Interstellar", "02:49", EMovieCategory.SCIENCEFICTION));
+        database.create(FMovie.createMovie("2001, L'Odysée de l'espace", "02:21", EMovieCategory.SCIENCE_FICTION));
+        database.create(FMovie.createMovie("Interstellar", "02:49", EMovieCategory.SCIENCE_FICTION));
         database.create(FMovie.createMovie("Knight of Cups", "01:58", EMovieCategory.DRAMA));
 
         User user = FUser.createUser("SpongeBob", EUserRole.USER);

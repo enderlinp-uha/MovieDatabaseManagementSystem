@@ -1,3 +1,3 @@
 public enum EMovieCategory {
-    ACTION, DRAMA, SCIENCEFICTION
+    ACTION, DRAMA, SCIENCE_FICTION
 }
