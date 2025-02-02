@@ -1,11 +1,30 @@
+import com.sun.net.httpserver.Request;
+
+import java.time.LocalDateTime;
+
 public class RequestHandler {
-    private IRequestHandler requestHandler;
     private BRequest request;
+    private RequestHandler requestHandler;
     private String conclusion;
 
-    public void handleRequest(IRequestHandler requestHandler, BRequest request) {
-        this.requestHandler = requestHandler;
+    public RequestHandler(BRequest request) {
         this.request = request;
+    }
+
+    public ERequestType getType() {
+        return request.getType();
+    }
+
+    public User getUser() {
+        return this.request.getUser();
+    }
+
+    public Movie getMovie() {
+        return this.request.getMovie();
+    }
+
+    public void handleRequest(RequestHandler requestHandler) {
+        this.requestHandler = requestHandler;
     }
 
     public String getConclusion() {

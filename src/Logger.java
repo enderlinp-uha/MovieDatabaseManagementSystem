@@ -3,12 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Logger {
-
-    ERequestType type;
-    String title;
-    String message;
-    LocalDateTime timestamp;
-    List<Logger> logs = new ArrayList<>();
+    private ERequestType type;
+    private String title;
+    private String message;
+    private List<Logger> logs = new ArrayList<>();
 
     public Logger() {}
 
@@ -16,21 +14,16 @@ public class Logger {
         this.type = type;
         this.title = title;
         this.message = message;
-        this.timestamp = LocalDateTime.now();
     }
 
-    public void log(ERequestType type, String title, String message) {
-        logs.add(new Logger(type, title, message));
-    }
-
-    public void showLogs() {
-        for (Logger log : logs) {
-            System.out.println(log);
-        }
+    public void log(RequestHandler request, String message) {
+        Logger entry = new Logger(request.getType(), request.getMovie().getTitle(), message);
+        logs.add(entry);
+        System.out.println(entry);
     }
 
     @Override
     public String toString() {
-        return "[" + timestamp + "] " + type + " - Film:" + title + " - " + message;
+        return "[" + LocalDateTime.now() + "] " + this.type + " - Film: " + this.title + " - " + this.message;
     }
 }

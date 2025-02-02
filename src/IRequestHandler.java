@@ -1,4 +1,4 @@
 public interface IRequestHandler {
     public void setNext(IRequestHandler next);
-    public void handleRequest(RequestHandler requestHandler, BRequest request);
+    public void handleRequest(RequestHandler request);
 }
