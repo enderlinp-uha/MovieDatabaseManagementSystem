@@ -21,4 +21,8 @@ public class Database {
     public void delete(Integer id) {
         this.movies.remove(id);
     }
+
+    public int getCount() {
+        return this.movies.size();
+    }
 }

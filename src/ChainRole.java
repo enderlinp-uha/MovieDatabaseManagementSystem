@@ -8,13 +8,18 @@ public class ChainRole implements IRequestHandler {
 
     @Override
     public void handleRequest(BRequest request) {
-        /*if (!request.getUser().isAdmin()) {
-            request.setConclusion("[Failure] " + request.getUser().getName() + " is not an administrator");
+        if (request.getType() != ERequestType.CREATE &&
+                request.getType() != ERequestType.UPDATE &&
+                request.getType() != ERequestType.DELETE) {
+            next.handleRequest(request);
+        }
+
+        if (!request.getUser().isAdmin()) {
+            request.setConclusion("User is not admin");
         } else {
-            System.out.println("[Success] " + request.getUser().getName() + " is an administrator");
             if (next != null) {
                 next.handleRequest(request);
             }
-        }*/
+        }
     }
 }

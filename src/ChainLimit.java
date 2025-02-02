@@ -1,5 +1,6 @@
-public class ChainLoggedIn implements IRequestHandler {
+public class ChainLimit implements IRequestHandler {
     private IRequestHandler next = null;
+    private final int LIMIT = 10;
 
     @Override
     public void setNext(IRequestHandler next) {
@@ -8,14 +9,12 @@ public class ChainLoggedIn implements IRequestHandler {
 
     @Override
     public void handleRequest(BRequest request) {
-        if (request.getType() != ERequestType.CREATE &&
-                request.getType() != ERequestType.UPDATE &&
-                request.getType() != ERequestType.DELETE) {
+        if (request.getType() != ERequestType.CREATE) {
             next.handleRequest(request);
         }
 
-        if (!request.getUser().isLoggedIn()) {
-            request.setConclusion("User is not logged in");
+        if (SDatabase.getInstance().getCount() > LIMIT) {
+            request.setConclusion("Database exceeded limit of " + LIMIT);
         } else {
             if (next != null) {
                 next.handleRequest(request);
