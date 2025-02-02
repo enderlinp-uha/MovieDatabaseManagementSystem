@@ -9,10 +9,10 @@ public class RoleValidation implements IValidationService {
     @Override
     public void handleRequest(ValidationRequest request) {
         if (!request.getAuthor().isAdmin()) {
-            request.setConclusion("You are not an admin!");
+            request.setConclusion("[Failure] Sorry, you are not an admin");
             next = null;
         } else {
-            request.setConclusion("You are now an admin");
+            request.setConclusion("[Success] Your role is admin");
             if (next != null) {
                 next.handleRequest(request);
             }

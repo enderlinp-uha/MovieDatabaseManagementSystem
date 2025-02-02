@@ -4,25 +4,25 @@ public class BRequest {
     private int id;
     private EType type;
     private LocalDateTime timestamp;
-    private String comment;
+    private String message;
     private User author;
-    private int movieId;
+    private Movie movie;
 
     private BRequest(Builder builder) {
         this.id = builder.id;
         this.type = builder.type;
-        this.comment = builder.comment;
+        this.message = builder.message;
         this.author = builder.author;
-        this.movieId = builder.movieId;
+        this.movie = builder.movie;
     }
 
     public static class Builder {
         private int id;
         private EType type;
         private LocalDateTime timestamp = LocalDateTime.now();
-        private String comment;
+        private String message;
         private User author;
-        private int movieId;
+        private Movie movie;
 
         public Builder() {}
 
@@ -40,8 +40,8 @@ public class BRequest {
             return this;
         }
 
-        public Builder setComment(String comment) {
-            this.comment = comment;
+        public Builder setMessage(String message) {
+            this.message = message;
             return this;
         }
 
@@ -50,8 +50,8 @@ public class BRequest {
             return this;
         }
 
-        public Builder setMovieId(int movieId) {
-            this.movieId = movieId;
+        public Builder setMovie(Movie movie) {
+            this.movie = movie;
             return this;
         }
 
@@ -62,6 +62,6 @@ public class BRequest {
 
     @Override
     public String toString() {
-        return "Request {id=" + id + ", type=" + type + ", timestamp=" + timestamp + ", comment=" + comment + ", author=" + author + ", movieId=" + movieId + "}";
+        return "Request {id=" + id + ", type=" + type + ", timestamp=" + timestamp + ", message=" + message + ", author=" + author + ", movie=" + movie + "}";
     }
 }

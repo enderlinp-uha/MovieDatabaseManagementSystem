@@ -9,10 +9,10 @@ public class AuthValidation implements IValidationService {
     @Override
     public void handleRequest(ValidationRequest request) {
         if (!request.getAuthor().isAuth()) {
-            request.setConclusion("You are not logged in!");
+            request.setConclusion("[Failure] Sorry, you are not logged in");
             next = null;
         } else {
-            System.out.println("You have successfully logged in");
+            System.out.println("[Success] You have successfully logged in");
             if (next != null) {
                 next.handleRequest(request);
             }

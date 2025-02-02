@@ -17,7 +17,6 @@ public class Main {
         System.out.println(user);
 
         Map<Integer, Movie> movies = new HashMap<>();
-
         Movie a = FMovie.create(1, "2001, L'Odysée de l'espace", "Science-fiction", "02:21");
         Movie b = FMovie.create(2, "Interstellar", "Science-fiction", "02:49");
         Movie c = FMovie.create(3, "Knight of Cups", "Drame", "01:58");
@@ -32,8 +31,8 @@ public class Main {
                 .setId(1)
                 .setAuthor(user)
                 .setType(EType.CREATE)
-                .setComment("")
-                .setMovieId(1)
+                .setMessage("Creation request initialized")
+                .setMovie(a)
                 .build();
 
         ValidationRequest request = new ValidationRequest(builder);
