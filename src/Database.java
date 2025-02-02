@@ -9,9 +9,16 @@ public class Database {
 
     public Movie create(Movie movie) {
         this.movies.put(movie.getId(), movie);
-
         SLogger.getIntance().log(ELogType.INFO, "Movie added to Database: " + movie.getTitle());
 
         return movie;
+    }
+
+    public void update(Integer id, Movie movie) {
+        this.movies.put(id, movie);
+    }
+
+    public void delete(Integer id) {
+        this.movies.remove(id);
     }
 }
